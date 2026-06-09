@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Localization Agency Portal</title>
+
+    <style>
+
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 20px; display: flex; justify-content: center; }
+
+        .card { background: white; max-width: 600px; width: 100%; padding: 40px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+
+        h1 { color: #2563eb; margin-bottom: 5px; }
+
+        .owner { color: #64748b; font-style: italic; margin-bottom: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+
+        .section { margin-bottom: 25px; text-align: left; }
+
+        h3 { color: #0f172a; margin-bottom: 10px; }
+
+        ul { list-style: none; padding: 0; }
+
+        li { background: #f1f5f9; margin: 5px 0; padding: 10px; border-radius: 8px; font-size: 0.95em; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 30px; }
+
+        button { padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+
+        .btn-order { background: #2563eb; color: white; }
+
+        .btn-order:hover { background: #1d4ed8; }
+
+        .btn-lang { background: #e2e8f0; color: #475569; }
+
+        .btn-lang:hover { background: #cbd5e1; }
+
+        select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; margin-top: 5px; }
+
+    </style>
+
+</head>
+
+<body>
+
+ 
+
+<div class="card">
+
+    <h1 id="agency_name">Loading...</h1>
+
+    <p class="owner"><span id="owner_label"></span> <strong id="owner_name"></strong></p>
+
+ 
+
+    <div class="section">
+
+        <h3 id="about_title"></h3>
+
+        <p id="about_text"></p>
+
+    </div>
+
+ 
+
+    <div class="section">
+
+        <h3 id="industries_title"></h3>
+
+        <ul id="industries_list">
+
+            <li id="ind_business"></li>
+
+            <li id="ind_edu"></li>
+
+            <li id="ind_tech"></li>
+
+        </ul>
+
+    </div>
+
+ 
+
+    <div class="section">
+
+        <h3 id="rates_title"></h3>
+
+        <ul>
+
+            <li id="rate_standard"></li>
+
+            <li id="rate_pro"></li>
+
+        </ul>
+
+    </div>
+
+ 
+
+    <div class="section">
+
+        <label id="lang_pair_title" style="font-weight: bold;"></label>
+
+        <select>
+
+            <option id="pair_1"></option>
+
+            <option id="pair_2"></option>
+
+            <option id="pair_3"></option>
+
+        </select>
+
+    </div>
+
+ 
+
+    <div class="btn-group">
+
+        <button class="btn-order" id="btn_order"></button>
+
+        <button class="btn-lang" onclick="toggleLang()" id="btn_lang"></button>
+
+    </div>
+
+</div>
+
+ 
+
+<script>
+
+    let currentLang = 'uk';
+
+ 
+
+    async function loadContent(lang) {
+
+        try {
+
+            const response = await fetch(lang + '.json');
+
+            const data = await response.json();
+
+ 
+
+            // Масове оновлення тексту за ID
+
+            Object.keys(data).forEach(key => {
+
+                const element = document.getElementById(key);
+
+                if (element) element.innerText = data[key];
+
+            });
+
+        } catch (e) {
+
+            console.error("Error loading lang file", e);
+
+        }
+
+    }
+
+ 
+
+    function toggleLang() {
+
+        currentLang = (currentLang === 'uk') ? 'en' : 'uk';
+
+        loadContent(currentLang);
+
+    }
+
+ 
+
+    loadContent('uk');
+
+</script>
+
+ 
+
+</body>
+
+</html>
