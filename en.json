@@ -1,0 +1,20 @@
+{
+  "agency_name": "World of Translation",
+  "owner_label": "Owner:",
+  "owner_name": "Yuliia Kotovska",
+  "about_title": "We are a translation agency. We translate texts into different languages. We work quickly and provide high quality services. Our goal is to help people understand each other better.",
+  "about_text": "We offer professional translation services for the global market.",
+  "industries_title": "Fields of Translation",
+  "ind_business": "Business and Finance",
+  "ind_edu": "Education and E-learning",
+  "ind_tech": "Technology and IT",
+  "rates_title": "Our Rates",
+  "rate_standard": "Standard Service: $0.05 per word",
+  "rate_pro": "Expert Service: $0.08 per word",
+  "lang_pair_title": "Choose a language pair:",
+  "pair_1": "Ukrainian - English",
+  "pair_2": "Ukrainian - German",
+  "pair_3": "Ukrainian - Polish",
+  "btn_order": "Order a Project",
+  "btn_lang": "Change Language"
+}
